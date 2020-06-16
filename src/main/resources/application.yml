@@ -1,0 +1,85 @@
+spring:
+    profiles:
+        active: local
+
+####################################################################################
+---
+spring:
+    profiles: local
+
+    datasource:
+        driverClassName : com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql://221.139.14.153:3306/digitalTwin?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&allowMultiQueries=true
+        url: jdbc:mysql://127.0.0.1:3306/digitalTwin?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&allowMultiQueries=true
+        username: digitalTwin
+        password: digitalTwin@!
+
+
+#mybatis:
+#    configuration:
+#        cache-enabled: false
+#        map-underscore-to-camel-case: true
+#    mapper-locations: classpath:sql/**/*.xml
+
+application:
+    name: waw_demon
+
+
+mvc:
+    locale: ko
+
+logging:
+    level:
+        root: info
+#        mysql: debug
+#        mybatis: debug
+        web: debug
+        kr.co.juvis.hub: debug
+#        jdbc:
+#            sqlonly: INFO
+#            audit: ERROR
+#            resultset: OFF
+#            resultsettable: OFF
+#            connection : OFF
+#            sqltiming: ERROR
+    file:
+        path: c:\/app/log/eknow/welcome_aw
+    pattern:
+        console: "%d %-5level %-30logger{30}.%M : %msg%n"
+        file: "%d %-5level %-30logger{30}.%M : %msg%n"
+
+server:
+    port: 9080
+
+
+# REQUEST API INFO
+dart:
+    accessKey: f98c66f2e75dff2e301bb2f4813af9d94ef1c37c
+    disClosureUrl: https://opendart.fss.or.kr/api/list.json
+
+#crm :
+#  url : http://crm.juvisdev.co.kr
+#inipay :
+#  mid : INIpayTest
+#  signKey : SU5JTElURV9UUklQTEVERVNfS0VZU1RS
+#  apiKey : ItEQKi3rY7uvDS8l
+#  apiIv : HYb3yQ4f65QL89==
+#  url :
+#    cancelUrl : https://deviniapi.inicis.com/api/v1/refund
+#    receiptUrl : https://deviniapi.inicis.com/api/v1/receipt
+
+#mail:
+#    host: mail.juvis.co.kr
+#    port: 587
+#    username: juvisdiet@juvis.co.kr
+#    password: qhdkstjqj!2
+#    properties:
+#      mail.smtp.auth: true
+#      #   mail.smtp.starttls.enable: true
+#      #   mail.smtp.starttls.required: true
+#      #   mail.smtp.timeout: 5000
+#      #   mail.smtp.writetimeout: 5000
+#    protocol: smtp
+#
+#  main:
+#    web-applicatoin: none
