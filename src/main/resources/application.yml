@@ -57,6 +57,15 @@ dart:
     accessKey: f98c66f2e75dff2e301bb2f4813af9d94ef1c37c
     disClosureUrl: https://opendart.fss.or.kr/api/list.json
 
+mail:
+    devId: readyfunc@gmail.com
+    devPwd: dlsgh1129!
+    smtp:
+        host: smtp.gmail.com
+        port: 465
+        auth: true
+
+
 #crm :
 #  url : http://crm.juvisdev.co.kr
 #inipay :
