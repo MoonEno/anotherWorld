@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 @Service
@@ -22,7 +24,7 @@ public class MailService {
     @Value("${mail.smtp.auth}")
     String AUTH;
 
-    public void sendEmail (String data, String[] target) {
+    public void sendEmail (String data) {
 
         Properties props = new Properties();
         props.put("mail.smtp.host", HOST);
@@ -38,14 +40,18 @@ public class MailService {
             }
         });
 
+        InternetAddress[] toList = {};
+
+
         try {
 
             MimeMessage message = new MimeMessage(session);
             InternetAddress to = new InternetAddress();
-            InternetAddress[] toList = {};
+
             message.setFrom(new InternetAddress(devId));
-            message.addRecipients(Message.RecipientType.TO, toList);
-            message.setSubject("이메일테스트");
+//            message.addRecipients(Message.RecipientType.TO, toList);
+            message.addRecipients(Message.RecipientType.TO, "moonshue@gmail.com");
+            message.setSubject("[주요사항보고] DEVELOP BY 2KNOWLEDGE");
             message.setText(data);
 
             Transport.send(message);
