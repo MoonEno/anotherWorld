@@ -10,16 +10,18 @@ spring:
     datasource:
         driverClassName : com.mysql.cj.jdbc.Driver
 #        url: jdbc:mysql://221.139.14.153:3306/digitalTwin?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&allowMultiQueries=true
-        url: jdbc:mysql://127.0.0.1:3306/digitalTwin?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&allowMultiQueries=true
-        username: digitalTwin
-        password: digitalTwin@!
+#         username: digitalTwin
+#         password: digitalTwin@!
+        # JUVIS 개발DB 임시사용
+        url: jdbc:mysql://54.180.163.103:3366/JUVIS2?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=UTC&noAccessToProcedureBodies=true&autoReconnect=true
+        username: juvis
+        password : wbqltmroqkfdb!2
 
-
-#mybatis:
-#    configuration:
-#        cache-enabled: false
-#        map-underscore-to-camel-case: true
-#    mapper-locations: classpath:sql/**/*.xml
+mybatis:
+    configuration:
+        cache-enabled: false
+        map-underscore-to-camel-case: true
+    mapper-locations: classpath:sql/**/*.xml
 
 application:
     name: waw_demon

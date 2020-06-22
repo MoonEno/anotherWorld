@@ -1,7 +1,37 @@
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
-<!--<mapper>-->
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" " http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<mapper namespace="waw.anotherworld.demon.services.disclosure.mapper.DisClosureDao">
 
+    <insert id="insertDisclosureInfo" parameterType="waw.anotherworld.demon.services.disclosure.model.DisClosureVO">
+        /*disclosure.insertDisclosureInfo*/
+        INSERT
+                j2t_form_info
+        SET
+                wdi_seq = DATE_FORMAT(NOW(6), '%Y%m%d%H%i%s%f')
+                ,corp_code = #{corpCode}
+                ,corp_name = #{corpName}
+                ,stock_code = #{stockCode}
+                ,report_name = #{reportName}
+                ,report_no = #{reportNo}
+                ,report_date = DATE_FORMAT(NOW(), '%Y-%m-%d')
+                ,firm_name = #{flrmName}
+    </insert>
 
-<!--</mapper>-->
+    <select id="selectAlreadySendInfoCheck" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT
+                IFNULL(GROUP_CONCAT(DISTINCT report_no),'')
+        FROM
+                j2t_form_info
+        WHERE
+                report_date = DATE_FORMAT(NOW(), '%Y-%m-%d')
+                AND wdi_confYN = 'Y'
+    </select>
+
+<!--    <update id="updateFormAssignShiftId" parameterType="kr.co.juvis.hub.services.formAssign.model.FormAssignVO">-->
+<!--        UPDATE j2t_form_assign-->
+<!--        SET sft_id = #{sftId}-->
+<!--        WHERE asn_id = #{asnId}-->
+<!--    </update>-->
+
+</mapper>

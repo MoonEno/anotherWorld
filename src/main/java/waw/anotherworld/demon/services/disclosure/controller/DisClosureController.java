@@ -17,7 +17,7 @@ public class DisClosureController {
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @RequestMapping("/testApi")
-    @Scheduled(cron = "0/50 * * * * *")
+    @Scheduled(cron = "0/30 * 8-17 * * *")
     public String getDailyDisClosure() {
         logger.info("============== .... LISTEN DART API SENDING .... ===========");
         return disClosureService.getDailyDisClosureInfo();
