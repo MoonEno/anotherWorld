@@ -24,6 +24,4 @@ public class NewsController {
         return newsService.getFinupGameZoaInfo();
     }
 
-
-
 }

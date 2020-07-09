@@ -4,6 +4,8 @@ package waw.anotherworld.demon.services.disclosure.service;
 import com.google.gson.Gson;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -128,7 +130,38 @@ public class DisClosureService {
 
     }
 
-    public void infoValueChecking(DisClosureResultVO disClosureResultVO) {
+    // 무상증자 세부내용 확인
+    public String getFreeIncreaseDetail(String stockCode) {
+
+        if (stockCode == "" || stockCode == null) {
+            return "StockCode is Null";
+        }
+
+        String url = "";
+        //      http://dart.fss.or.kr/dsaf001/main.do?rcpNo=20200709000140
+        try {
+            url = "http://dart.fss.or.kr/dsaf001/main.do?rcpNo=20200709000140";
+            Document doc = Jsoup.connect(url).post();
+
+            if (doc != null) {
+
+                String eleStr = doc.getElementsByClass("view_search").html();
+                int idx = eleStr.indexOf("openPdfDownload");
+                String dcmStrTmp = eleStr.substring(idx, idx+45);
+                String dcmIdx = dcmStrTmp.replaceAll("openPdfDownload", "").replaceAll("20200709000140", "").replaceAll("\\(","").replaceAll("\\)", "").replaceAll("\\'", "").replaceAll("\\,", "").replaceAll("\\;", "").replaceAll("\\\" " ,"").replaceAll(" ", "");
+                String incUrl = "";
+                if (dcmIdx != null && !"".equalsIgnoreCase(dcmIdx)) {
+                     incUrl = "/report/viewer.do?rcpNo=" + stockCode + "&dcmNo=" + dcmIdx + "&eleId=0&offset=0&length=0&dtd=dart3.xsd";
+                     Document doc2 = Jsoup.connect(incUrl).post();
+                }
+
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+         return url;
 
     }
 
