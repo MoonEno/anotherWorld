@@ -1,4 +1,4 @@
-package waw.anotherworld.demon.services.news.service;
+package waw.anotherworld.demon.services.info.service;
 
 
 import com.google.gson.Gson;
@@ -19,17 +19,15 @@ import waw.anotherworld.demon.services.disclosure.model.DisClosureVO;
 import java.io.IOException;
 
 @Service
-public class NewsService {
+public class InfoService {
 
 
     @Autowired
     HttpCallService httpCallService;
 
-    @Autowired
-    MailService mailService;
-
     public String getFinupGameZoaInfo() {
 
+        //  https://stock.finup.co.kr/Package/Package5ViewBoardList.aspx?BTIdx=17
         HttpResultVO resultVO = new HttpResultVO();
 
         try {
